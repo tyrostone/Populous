@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @district.country_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @district.state_id %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @district.county_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @district.level_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @district.name %>
+</p>
+
+<%= link_to 'Edit', edit_district_path(@district) %> |
+<%= link_to 'Back', districts_path %>

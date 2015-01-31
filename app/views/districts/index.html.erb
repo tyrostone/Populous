@@ -1,0 +1,35 @@
+<h1>Listing districts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>State</th>
+      <th>County</th>
+      <th>Level</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @districts.each do |district| %>
+      <tr>
+        <td><%= district.country_id %></td>
+        <td><%= district.state_id %></td>
+        <td><%= district.county_id %></td>
+        <td><%= district.level_id %></td>
+        <td><%= district.name %></td>
+        <td><%= link_to 'Show', district %></td>
+        <td><%= link_to 'Edit', edit_district_path(district) %></td>
+        <td><%= link_to 'Destroy', district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New District', new_district_path %>

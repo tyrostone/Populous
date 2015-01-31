@@ -1,0 +1,31 @@
+<h1>Listing cycles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Startcycle</th>
+      <th>Endcycle</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cycles.each do |cycle| %>
+      <tr>
+        <td><%= cycle.name %></td>
+        <td><%= cycle.startcycle %></td>
+        <td><%= cycle.endcycle %></td>
+        <td><%= link_to 'Show', cycle %></td>
+        <td><%= link_to 'Edit', edit_cycle_path(cycle) %></td>
+        <td><%= link_to 'Destroy', cycle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cycle', new_cycle_path %>

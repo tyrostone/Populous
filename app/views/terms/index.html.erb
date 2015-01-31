@@ -1,0 +1,35 @@
+<h1>Listing terms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Representative</th>
+      <th>Seat</th>
+      <th>Startterm</th>
+      <th>Endterm</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @terms.each do |term| %>
+      <tr>
+        <td><%= term.representative_id %></td>
+        <td><%= term.seat_id %></td>
+        <td><%= term.startterm %></td>
+        <td><%= term.endterm %></td>
+        <td><%= term.name %></td>
+        <td><%= link_to 'Show', term %></td>
+        <td><%= link_to 'Edit', edit_term_path(term) %></td>
+        <td><%= link_to 'Destroy', term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Term', new_term_path %>

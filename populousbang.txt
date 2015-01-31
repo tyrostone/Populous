@@ -1,0 +1,150 @@
+
+===============================================================================
+=== Build Populous System
+=== Define what the voucher system does ---------------------------------------
+=== 
+=== 
+=== 
+=== 
+=== 
+=== 
+===============================================================================
+
+install
+
+(1) homebrew (if mac)
+(2) mysql
+(3) posgresql
+(4) phpmyadmin	
+    m: brew tap homebrew/dupes
+	   brew tap josegonzalez/homebrew-php
+	   brew install phpmyadmin
+
+===============================================================================
+
+=====> start project
+cd Projects
+rails new populous_mysql -d mysql
+cd populous_mysql
+
+=====> update gem file 
+~ excerpt from Gemfile
+gem 'paperclip', '~> 3.5.0'
+gem 'devise'
+gem 'rmagick'
+gem 'to_lang'
+
+=====> UPDATE: config/database.yml
+=====> CREATE: populous_mysql_development (utf8_general_ci) in mysql via phpmyadmin
+
+=====> setup root
+bundle install
+rails g controller Populous index about issues reps details contribution confirm contact
+
+=====> setup devise
+rails g devise:install
+rails g devise user
+rails g devise:views
+bundle exec rake db:migrate RAILS_ENV=development
+
+=====> setup document
+rails g scaffold Document representative_id:integer name:string description:string
+rails g paperclip document source
+
+=====> setup representation hierarchy 										
+rails g scaffold Country name:string short:string
+rails g scaffold State country_id:integer name:string short:string			
+rails g scaffold County state_id:integer name:string short:string
+rails g scaffold Level name:string short:string
+rails g scaffold District country_id:integer state_id:integer county_id:integer level_id:integer name:string 
+rails g scaffold Seat district_id:integer level_id:integer cycle_id:integer elected:boolean name:string
+rails g scaffold Cycle name:string startcycle:datetime endcycle:datetime
+rails g scaffold Party country_id:string name:string
+rails g scaffold Representative district_id:integer party_id:integer fname:string lname:string phone:string email:string
+rails g scaffold Term representative_id:integer seat_id:integer startterm:datetime endterm:datetime name:string
+rails g scaffold Branch name:string
+rails g scaffold Committee level_id:integer branch_id:integer name:string
+rails g scaffold Assignment term_id:integer comittee_id:integer startass:datetime endass:datetime
+
+=====> setup issue hierarchy
+rails g scaffold Issue name:string description:text							
+rails g scaffold Type name:string short:string
+rails g scaffold Measurement name:string description:text
+
+=====> setup issue tracking through time
+rails g scaffold Event issue_id:integer user_id:integer measurement_id:integer value:decimal description:string contribution:decimal mark:datetime 
+
+
+=====> setup user participation
+rails g scaffold Contribution user_id:integer representative_id:integer issue_id:integer value:decimal
+
+=====> setup voucher record
+rails g scaffold Voucher contribution_id:integer
+
+=====> continue building database
+bundle exec rake db:migrate RAILS_ENV=development
+
+=====> modify routes
+=====> modify models
+
+=====> seed the tables
+bundle exec rake db:seed
+
+
+
+
+
+
+
+
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined default url options in your environments files. Here
+     is an example of default_url_options appropriate for a development environment
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root to: "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+  4. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+
+       config.assets.initialize_on_precompile = false
+
+     On config/application.rb forcing your application to not access the DB
+     or load models when precompiling your assets.
+
+  5. You can copy Devise views (for customization) to your app by running:
+
+       rails g devise:views
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

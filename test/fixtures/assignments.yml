@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  term_id: 1
+  comittee_id: 1
+  startass: 2015-01-29 17:18:38
+  endass: 2015-01-29 17:18:38
+
+two:
+  term_id: 1
+  comittee_id: 1
+  startass: 2015-01-29 17:18:38
+  endass: 2015-01-29 17:18:38

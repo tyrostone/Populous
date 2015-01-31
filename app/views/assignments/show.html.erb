@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @assignment.term_id %>
+</p>
+
+<p>
+  <strong>Comittee:</strong>
+  <%= @assignment.comittee_id %>
+</p>
+
+<p>
+  <strong>Startass:</strong>
+  <%= @assignment.startass %>
+</p>
+
+<p>
+  <strong>Endass:</strong>
+  <%= @assignment.endass %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

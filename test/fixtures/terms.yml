@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  representative_id: 1
+  seat_id: 1
+  startterm: 2015-01-29 17:18:16
+  endterm: 2015-01-29 17:18:16
+  name: MyString
+
+two:
+  representative_id: 1
+  seat_id: 1
+  startterm: 2015-01-29 17:18:16
+  endterm: 2015-01-29 17:18:16
+  name: MyString

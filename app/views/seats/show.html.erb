@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>District:</strong>
+  <%= @seat.district_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @seat.level_id %>
+</p>
+
+<p>
+  <strong>Cycle:</strong>
+  <%= @seat.cycle_id %>
+</p>
+
+<p>
+  <strong>Elected:</strong>
+  <%= @seat.elected %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @seat.name %>
+</p>
+
+<%= link_to 'Edit', edit_seat_path(@seat) %> |
+<%= link_to 'Back', seats_path %>

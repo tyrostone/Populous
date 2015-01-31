@@ -1,0 +1,29 @@
+<h1>Listing committees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @committees.each do |committee| %>
+      <tr>
+        <td><%= committee.level_id %></td>
+        <td><%= committee.name %></td>
+        <td><%= link_to 'Show', committee %></td>
+        <td><%= link_to 'Edit', edit_committee_path(committee) %></td>
+        <td><%= link_to 'Destroy', committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Committee', new_committee_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  startcycle: 2015-01-29 17:17:30
+  endcycle: 2015-01-29 17:17:30
+
+two:
+  name: MyString
+  startcycle: 2015-01-29 17:17:30
+  endcycle: 2015-01-29 17:17:30

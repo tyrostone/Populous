@@ -1,0 +1,33 @@
+<h1>Listing assignments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Comittee</th>
+      <th>Startass</th>
+      <th>Endass</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.term_id %></td>
+        <td><%= assignment.comittee_id %></td>
+        <td><%= assignment.startass %></td>
+        <td><%= assignment.endass %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment', new_assignment_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  district_id: 1
+  level_id: 1
+  cycle_id: MyString
+  elected: false
+  name: MyString
+
+two:
+  district_id: 1
+  level_id: 1
+  cycle_id: MyString
+  elected: false
+  name: MyString
