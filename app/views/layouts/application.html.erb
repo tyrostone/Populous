@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PopulousMysql</title>
+  <title>Populous</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "raphael-min", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
-  <%#= javascript_include_tag "jquery-1.9.1.min.js" %>
+  <%= javascript_include_tag "jquery-1.9.1.min.js" %>
+  <%= javascript_include_tag "pie.js" %>
   <%#= javascript_include_tag "can.jquery.js" %>
 </head>
 <body>
@@ -19,19 +20,20 @@
         <h1>Populous</h1>
       </div>
 
-      <div class="right">
+      <div class="key">
       <% if user_signed_in? %>
         <%= link_to image_tag("/assets/poweroff.png", :border => 0, :width => 24), destroy_user_session_path, :method => :delete %>
       <% else %>
         <%= link_to image_tag("/assets/poweron.png", :border => 0, :width => 24), new_user_session_path %>
       <% end %>
+
       </div>
     </div>
 
   </div>
   
   <div class="lownav">
-    <a href="/populous/index">home</a> | 
+    <a href="/populous/index">search</a> | 
   <a href="/populous/issues">issues</a> | <a href="/populous/reps">representatives</a> | <a href="/populous/about">about</a> | <a href="/populous/legal">legal</a>
   </div>
 
