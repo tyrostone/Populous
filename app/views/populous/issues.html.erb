@@ -1,25 +1,63 @@
-<div id="left-sidebar">
-	<ul>
-	 <!-- List elements goes here -->	
-	 <!-- E.g.
-	 <li repeat="issue in issues">
-	</ul> -->
+<script type='text/javascript'>
+
+$(document).ready(function() {
+  $('.detail-link').click(function() {
+	alert("hello");
+    });     
+  });
+
+$(document).ready(function() {
+
+  $('.upvote').click(function() {
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/upvoteissue/",
+      data: { id: this.id, vote: 1 }
+    });     
+  });
+
+  $('.downvote').click(function() {
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/downvoteissue/",
+      data: { id: this.id, vote: -1 }
+    });     
+  });
+
+  }); 
+
+</script>
+
+<div class="bar left">
+	
+	<% @issues.each do |issue| %>
+        <div class="detail-link %>"><a href="#"><%= issue.name %></a></div>
+    <% end %>
+
 </div>
 
-<div class="">
-	<h1>Issues Landing</h1>
+<div class="mainc right lb">
+	<h1>Issues </h1>
 	<p>Click the links on the left to view information about different issues. For the purposes of this hackathon, we focus on topics related to Campaign Finance Reform.</p>
-	<p>Here are a few popular issues to look at to get started:</p>
-	<ul>
-		<!-- List elements go here -->
-		<!-- E.g. 
-		<li repeat="issue in issues | sort most answered | limit 3">
-		-->
-	</ul>
+	
 	<a href="/populous/details">Issue Details</a>
 
+	<% @issues.each do |issue| %>
+        <div style="display: none;" class="detail-id=<%=issue.id %>"><%=issue.description %></div>
+    <% end %>
 
+    <br>
+    
+    <div class="clr"></div>
     <% if user_signed_in? %>
-    	<pre><%= current_user.email %>: Your response to this issue is - Not In Favor</pre>
+    	<pre><%= current_user.email %>: Your response to this issue is - Not In Favor
+    	<div class="right"><a href="#" class="upvote">upvote</a> | <a href="#" class="downvote">downvote</a></div>
+    	<div class="clr"></div></pre>
     <% end %>
 </div>

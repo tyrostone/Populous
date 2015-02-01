@@ -43,7 +43,7 @@
 	padding: 10px;
 	width: 950px;
 	border: 1px solid #333;
-	min-height: 500px;
+	min-height: 1000px;
 }
 .footer {
 	margin: 5px auto;
@@ -69,7 +69,17 @@
 .rb {
 	border-right: 1px solid #333;
 }
+.lb {
+	border-left: 1px solid #333;
+}
 .clr {
 	clear: both;
+}
+.bar {
+	width: 250px;
+}
+.mainc {
+	width: 650px;
+	padding-left: 10px;
 }
 

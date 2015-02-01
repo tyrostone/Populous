@@ -27,6 +27,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Need jQuery turbolinks to fix JavaScript load issues
+gem 'jquery-turbolinks'
+
 gem 'paperclip', '~> 3.5.0'
 gem 'devise'
 gem 'rmagick'

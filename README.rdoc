@@ -1,20 +1,27 @@
 == README
 
-This is the README for the Populus web application. This application began development during the 2015 hack4congress event at Harvard University.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Here are some application details:
+Things you may want to cover:
 
-* Ruby version: 2.0.0p247
-* Rails version: 4.0.0
+* Ruby version
+
+* System dependencies
 
 * Configuration
-	* View populousbang.txt for full details for building out the Populous system, including:
-		A) Dependencies installation
-		B) Scaffolding creation
-		C) Database seeding
+
+* Database creation
+
+* Database initialization
 
 * How to run the test suite
-	* There is currently no test suite for Populous.
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
 
 
 Please feel free to use a different markup language if you do not plan to run

@@ -46,9 +46,16 @@ PopulousMysql::Application.routes.draw do
   get "populous/issues"
   get "populous/reps"
   get "populous/details"
+  get "populous/repdetails"
   get "populous/contribution"
   get "populous/confirm"
   get "populous/contact"
+
+  post "populous/upvoteissue"
+  post "populous/downvoteissue"
+  post "populous/upvoterep"
+  post "populous/downvoterep"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

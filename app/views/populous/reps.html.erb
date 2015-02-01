@@ -1,31 +1,57 @@
-<div id="left-sidebar">
-	<ul>
-	 <!-- List elements goes here -->	
-	 <!-- E.g.
-	 <li repeat="rep in reps">-->
-	</ul> 
-</div>
+<script type='text/javascript'>
 
-<main>
-	<h1>Representatives of Congress<h1>
-	<p>Click the links on the left to view information about different representatives of Congress. Information provided about each legislator includes:</p>
-	<ul>
-		<li>Contact information<li>
-		<li>Bulk contributions received by congressperson</li>
-		<li>Committees the congressperson sits on</li>
-		<li>Congressperson's voting records</li>
-		<li>and more...</li>
-	</ul>
-	<pre id="showOnUserLocation">
-		The representative that serves your area is:
-		<!-- Get representative based on user location -->
-		<!-- E.g. {{user.location.representative}} -->
-	</pre>
-	    <% if user_signed_in? %>
-    	<pre><%= current_user.email %>: Your view of this representative - Favorable.</pre>
+$(document).ready(function() {
+  $('.detail-link').click(function() {
+    alert("hello");
+    });     
+  });
+
+$(document).ready(function() {
+
+  $('.upvote').click(function() {
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/upvoterep/",
+      data: { id: this.id, vote: 1 }
+    });     
+  });
+
+  $('.downvote').click(function() {
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/downvoterep/",
+      data: { id: this.id, vote: -1 }
+    });     
+  });
+
+  }); 
+
+</script>
+
+<div class="bar left">
+    
+    <% @representatives.each do |representative| %>
+        <div class="detail-link %>"><a href="#"><%= representative.fname %> <%= representative.lname %></a></div>
     <% end %>
 
+</div>
 
+<div class="mainc right lb">
+    <h1>Representatives</h1>
+    <p>Click the links on the left to view information about different issues. For the purposes of this hackathon, we focus on topics related to Campaign Finance Reform.</p>
+    
+    <a href="/populous/repdetails">Representative Details</a>
+
+    <% @representatives.each do |representative| %>
+        <div style="display: none;" class="detail-id=<%=representative.id %>"><%=representative.email %></div>
+    <% end %>
+    
             <style media="screen">
             #holder {
                 width: 700px;
@@ -50,4 +76,18 @@
             </tbody>
         </table>
         <div id="holder"></div>
-</main>
+
+    <br>
+
+    <div class="clr"></div>
+    <% if user_signed_in? %>
+        <pre><%= current_user.email %>: Your response to this issue is - Not In Favor
+        <div class="right"><a href="#" class="upvote">upvote</a> | <a href="#" class="downvote">downvote</a>
+        </div>
+        <div class="clr"></div></pre>
+        <br>
+        <a href="/populous/contribution">Make a Contribution</a>
+    <% end %>
+
+    <div class="clr"></div>
+</div>
